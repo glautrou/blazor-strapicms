@@ -68,7 +68,19 @@ Then:
 ```
 # Creating Strapi project:
 yarn create strapi-app bs-back
+# > Select "Quickstart" as installation option
 
 # Running Strapi
 yarn develop
 ```
+
+Your browser should open and redirect you to http://localhost:1337/admin/auth/register-admin. Look at the domain, "localhost", meaning we are running Strapi on local computer.
+
+Let's play with the Strapi Back-end! At first it looks a little bit more complex than Netlify CMS:
+- Media library: Add your assets here
+- Content-type Builder: Define your entity types and relationships
+- Content Manager : Add your content using your entity declarations
+
+Nice! This looks qt glance much better and powerful than Netlify. But remember Step 2, we want to create a Strapi Docker image ;)
+
+# Step 4: Finally creating the Strapi Docker image
