@@ -35,6 +35,12 @@ I guess that will be the simplest step of my POC:
 
 Yeah!
 
+During thios POC we will use a mono-repository with those two root directories:
+- bs-front: Blazor app
+- bs-back: Strapi app
+
+Note : "bs" stand for "blazor-strapicms" which is just the name of our project.
+
 # Step 2: Creating a Strapi Docker image
 
 The first step I did was to check at Strapi documentation to get their Docker image. This is what is written as first paragraph:
@@ -52,3 +58,17 @@ So far so good.
 
 # Step 3: Creating Strapi project
 
+Strapi has some starters, for instance for creating with a Gatsby Front-end. Here we will be building our custom Front-end so we only need Strapi. [Per the docs](https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/installation/cli.html#creating-a-strapi-project) the recommended way is using the CLI.
+
+We will use Yarn instead of Npm, you can use the one you prefer.
+
+To install Yarn: `npm install --global yarn`
+
+Then:
+```
+# Creating Strapi project:
+yarn create strapi-app bs-back
+
+# Running Strapi
+yarn develop
+```
