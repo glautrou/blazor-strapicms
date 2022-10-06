@@ -58,6 +58,8 @@ So far so good.
 
 # Step 3: Creating Strapi project
 
+## Project creation
+
 Strapi has some starters, for instance for creating with a Gatsby Front-end. In this POC we will be building our custom Front-end so we only need a bare metal Strapi. [Per the docs](https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/installation/cli.html#creating-a-strapi-project) the recommended way is using the CLI.
 
 We will use Yarn instead of Npm, you can use the one you prefer.
@@ -68,7 +70,16 @@ Then:
 ```
 # Creating Strapi project:
 yarn create strapi-app bs-back
-# > Select "Quickstart" as installation option
+# > Use 'Quickstart' if you want default settings with a Sqlite database
+# > Choose your installation type Custom (manual settings)
+# > Choose your preferred language TypeScript
+# > hoose your default database client postgres
+# > Database name: bs-back
+# > Host: 127.0.0.1
+# > Port: 5432
+# > Username: postgres
+# > Password: demo
+# > Enable SSL connection: No
 
 # Open directory
 cd bs-back
@@ -77,14 +88,33 @@ cd bs-back
 yarn develop
 ```
 
-Your browser should open and redirect you to http://localhost:1337/admin/auth/register-admin. Look at the domain, "localhost", meaning we are running Strapi on the local machine.
+If you choose a PostreSQL database, unfortunately that doesn't work : `error: connect ECONNREFUSED 127.0.0.1:5432`
 
-http://localhost:1337/ shows the state of the server (running).
+This is quite obvious, we first need to create a PostgeSQL database.
+
+## Create a Docker PostreSQL database
+
+[Docker Hub example](https://hub.docker.com/_/postgres) :
+
+```
+docker run -dp 5432:5432 --name bs-db -e POSTGRES_PASSWORD=demo -e POSTGRES_DB=bs-back  -d postgres
+```
+
+## Run Strapi once again
+
+```
+# Running Strapi
+yarn develop
+```
+
+Your browser should open and redirect you to http://localhost:1337/admin/auth/register-admin, otherwise open it. Look at the domain, "localhost", meaning we are running Strapi on the local machine.
 
 Let's play with the Strapi Back-end! At first it looks a little bit more complex than other solutions, like Netlify CMS:
 - Media library: Add your assets here
 - Content-type Builder: Define your entity types and relationships
 - Content Manager : Add your content using your entity declarations
+
+http://localhost:1337/ shows the state of the server (running).
 
 Nice! This now looks much better and powerful than Netlify CMS. But remember Step 2, we want to create a Strapi Docker image ;)
 
