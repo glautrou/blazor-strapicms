@@ -118,15 +118,89 @@ http://localhost:1337/ shows the state of the server (running).
 
 Nice! This now looks much better and powerful than Netlify CMS. But remember Step 2, we want to create a Strapi Docker image ;)
 
-# Step 4: Finally creating the Strapi Docker image
+# Step 4: Data
 
-TODO...
+It's time to create a new schema and add some data to our CMS. To keep it simple we will create a blog (very common, yeah I know).
+
+## Schema
+
+blog
+  -> banner
+  -> nbPostsToDisplay
+  -> featuredPost
+  -> post[]
+    -> title
+    -> slug
+    -> description
+    -> banner
+    -> date
+    -> isVisible
+    -> content
+    -> category
+    -> author[]
+      -> firstname
+      -> lastname
+      -> bio
+      -> email
+    -> comment[]
+      -> name
+      -> text
+      -> date
+      -> answers[] -> comment[]
+
+## Slugs
+
+For the slug we will use [the Slugify plugin](https://market.strapi.io/plugins/strapi-plugin-slugify) to generate it.
+
+```
+# Install Slugify plugin
+yarn add strapi-plugin-slugify
+```
+
+Then you have to create the ./config/plugins.ts if missing:
+
+```
+export default ({ env }) => ({
+    // ...
+    slugify: {
+      enabled: true,
+      config: {
+        contentTypes: {
+          post: {
+            field: 'slug',
+            references: 'title',
+          },
+        },
+      },
+    },
+    // ...
+  });
+```
+
+## Data
+
+You can now add some data.
+
+## API Token
+
+Let's grab an API token for our future client app. Go to Settings >> API Tokens >> Create new API Token.
+
+Copy it for next chapter.
 
 # Step 5 : Let's create this Blazor WASM app
 
+Our app should be:
+- Home page with carousel, featured post description, and a list of the description of last x posts
+- Post page with post details, authors and comments. URL will be the slug
+- Author page with list of posts
+
 TODO...
 
-# Step 6 : Time to host it on Azure Container App
+# Step 6: Finally creating the Strapi Docker image and docker-compose
+
+TODO...
+
+# Step 7 : Time to host it on Azure Container App
 
 TODO...
 
@@ -137,6 +211,9 @@ TODO...
 # Going further
 
 - [ ] Multi environment schema/data/api
+- [ ] Look at database schema
+- [ ] Strapi with Gatsbi client
+- [ ] Strapi with Next.js
 - [ ] Strapi cloud pricing
 - [ ] Azure Container Instance
 - [ ] API security
