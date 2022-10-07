@@ -133,3 +133,11 @@ TODO...
 # Conclusion
 
 TODO...
+
+# Going further
+
+- [ ] Multi environment schema/data/api
+- [ ] Strapi cloud pricing
+- [ ] Azure Container Instance
+- [ ] API security
+- [ ] ...
