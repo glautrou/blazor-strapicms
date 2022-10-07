@@ -95,6 +95,22 @@
             "type": "relation",
             "relation": "oneToMany",
             "target": "api::comment.comment"
+        },
+        "category": {
+            "pluginOptions": {
+                "i18n": {
+                    "localized": true
+                }
+            },
+            "type": "enumeration",
+            "enum": [
+                "General",
+                ".NET",
+                "Azure",
+                "DevOps"
+            ],
+            "required": true,
+            "default": "General"
         }
     }
 }
