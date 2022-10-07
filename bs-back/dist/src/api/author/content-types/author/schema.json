@@ -1,0 +1,36 @@
+{
+    "kind": "collectionType",
+    "collectionName": "authors",
+    "info": {
+        "singularName": "author",
+        "pluralName": "authors",
+        "displayName": "Author"
+    },
+    "options": {
+        "draftAndPublish": false
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "firstName": {
+            "type": "string",
+            "required": true
+        },
+        "lastName": {
+            "type": "string",
+            "required": true
+        },
+        "bio": {
+            "type": "text"
+        },
+        "email": {
+            "type": "email",
+            "unique": true
+        },
+        "posts": {
+            "type": "relation",
+            "relation": "manyToMany",
+            "target": "api::post.post",
+            "inversedBy": "authors"
+        }
+    }
+}
