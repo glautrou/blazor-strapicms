@@ -1,0 +1,33 @@
+{
+    "kind": "collectionType",
+    "collectionName": "comments",
+    "info": {
+        "singularName": "comment",
+        "pluralName": "comments",
+        "displayName": "Comment",
+        "description": ""
+    },
+    "options": {
+        "draftAndPublish": false
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "name": {
+            "type": "string",
+            "required": true
+        },
+        "text": {
+            "type": "text",
+            "required": true
+        },
+        "date": {
+            "type": "datetime",
+            "required": true
+        },
+        "answers": {
+            "type": "relation",
+            "relation": "oneToMany",
+            "target": "api::comment.comment"
+        }
+    }
+}
