@@ -181,9 +181,13 @@ export default ({ env }) => ({
 
 You can now add some data.
 
-## API Token
+## API
 
-Let's grab an API token for our future client app. Go to Settings >> API Tokens >> Create new API Token.
+By default Strapi uses REST endpoint, you can also [install a GraphQL plugin](https://docs.strapi.io/developer-docs/latest/plugins/graphql.html#usage).
+
+All [generated endpoints](https://docs-v3.strapi.io/developer-docs/latest/developer-resources/content-api/content-api.html#endpoints) are similar depending on collection or single type, and you can use [parameters](https://docs-v3.strapi.io/developer-docs/latest/developer-resources/content-api/content-api.html#filters) in the URL (filters, sort, limit, start, publication state, locale). Pretty handy.
+
+To get an API token for our future client app, go to Settings >> API Tokens >> Create new API Token.
 
 Copy it for next chapter.
 
@@ -193,6 +197,11 @@ Our app should be:
 - Home page with carousel, featured post description, and a list of the description of last x posts
 - Post page with post details, authors and comments. URL will be the slug
 - Author page with list of posts
+
+cd ..
+dotnet new blazorwasm -o bs-front --no-https -f net6.0
+cd bs-front
+dotnet run
 
 TODO...
 
